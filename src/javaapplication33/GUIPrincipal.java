@@ -21,7 +21,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel3.setVisible(false);
         jTextArea1.setVisible(false);
         jScrollPane1.setVisible(false);
-        //AccesoBBDD.rellenaDepartamentos();
+        AccesoBBDD.rellenaDepartamentos();
     }
 
     /**
