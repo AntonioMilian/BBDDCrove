@@ -16,6 +16,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
      */
     public GUIPrincipal() {
         initComponents();
+        listaEmpleados.setVisible(false);
         AccesoBBDD.rellenaDepartamentos();
     }
 
@@ -30,28 +31,46 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         listaDepartamentos = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        listaEmpleados = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         listaDepartamentos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaDepartamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaDepartamentosMouseClicked(evt);
+            }
+        });
         listaDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaDepartamentosActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Departamento");
+        jLabel1.setText("Departamentos");
+
+        jLabel2.setText("Empleados");
+
+        listaEmpleados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(listaDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)
+                        .addComponent(listaDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,7 +79,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listaDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,6 +92,14 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private void listaDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDepartamentosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaDepartamentosActionPerformed
+
+    private void listaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaDepartamentosMouseClicked
+        listaEmpleados.setVisible(true);
+        String seleccionado=(listaDepartamentos.getItemAt(listaDepartamentos.getItemCount())).toString();
+        String [] partido = seleccionado.split(" ");
+        String numDepartamento = partido[0];
+        AccesoBBDD.rellenaEmpleados(numDepartamento);
+    }//GEN-LAST:event_listaDepartamentosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -107,6 +138,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public static javax.swing.JComboBox listaDepartamentos;
+    public static javax.swing.JComboBox listaEmpleados;
     // End of variables declaration//GEN-END:variables
 }
