@@ -17,6 +17,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     public GUIPrincipal() {
         initComponents();
         listaEmpleados.setVisible(false);
+        jLabel2.setVisible(false);
         AccesoBBDD.rellenaDepartamentos();
     }
 
@@ -95,6 +96,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void listaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaDepartamentosMouseClicked
         listaEmpleados.setVisible(true);
+        jLabel2.setVisible(true);
         String seleccionado=(listaDepartamentos.getItemAt(listaDepartamentos.getItemCount())).toString();
         String [] partido = seleccionado.split(" ");
         String numDepartamento = partido[0];
