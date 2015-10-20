@@ -74,7 +74,9 @@ public class AccesoBBDD {
         try {
             Connection con = devuelveConexion();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from proyecto, trabaja where proyecto.proyecno=trabaja.proyecno and trabaja.empno = "+numEmpleado);
+            ResultSet rs = st.executeQuery("select P.proyeno, P.nombre, T.horas "
+                    + "from proyecto P, trabaja T "
+                    + "where P.proyecno=T.proyecno and T.empno = "+numEmpleado);
             GUIPrincipal.jTextArea1.append("NUMERO      NOMBRE      HORAS\n");
             GUIPrincipal.jTextArea1.append("===============================\n");
             StringBuilder sb = new StringBuilder();
