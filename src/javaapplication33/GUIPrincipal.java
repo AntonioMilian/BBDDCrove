@@ -133,7 +133,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private void listaDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDepartamentosActionPerformed
         listaEmpleados.setVisible(true);
         jLabel2.setVisible(true);
-        String seleccionado=(listaDepartamentos.getItemAt(listaDepartamentos.getItemCount())).toString();
+        String seleccionado=(listaDepartamentos.getSelectedItem()).toString();
         String [] partido = seleccionado.split(" ");
         String numDepartamento = partido[0];
         AccesoBBDD.rellenaEmpleados(numDepartamento);
@@ -143,7 +143,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel3.setVisible(true);
         jScrollPane1.setVisible(true);
         jTextArea1.setVisible(true);
-        String seleccionado=(listaEmpleados.getItemAt(listaDepartamentos.getItemCount())).toString();
+        String seleccionado=(listaEmpleados.getSelectedItem()).toString();
         String [] partido = seleccionado.split(" ");
         String numEmpleado = partido[0];
         AccesoBBDD.rellenaTareas(numEmpleado);
