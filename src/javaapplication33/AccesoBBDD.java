@@ -33,11 +33,11 @@ public class AccesoBBDD {
             ResultSet rs = st.executeQuery("select * from dep");
             StringBuilder sb = new StringBuilder();
             while (rs.next()){
-                sb.append(rs.getObject("depno"));
+                sb.append(rs.getString("depno"));
                 sb.append(" ");
-                sb.append(rs.getObject("dnombre"));
+                sb.append(rs.getString("dnombre"));
                 sb.append(" ");
-                sb.append(rs.getObject("ciudad"));
+                sb.append(rs.getString("ciudad"));
                 GUIPrincipal.listaDepartamentos.addItem(sb.toString());
             }
             con.close();
@@ -56,11 +56,11 @@ public class AccesoBBDD {
             
             StringBuilder sb = new StringBuilder();
             while (rs.next()){
-                sb.append(rs.getObject("empno"));
+                sb.append(rs.getString("empno"));
                 sb.append(" ");
-                sb.append(rs.getObject("apellido"));
+                sb.append(rs.getString("apellido"));
                 sb.append(" ");
-                sb.append(rs.getObject("fechalta"));
+                sb.append(rs.getString("fechalta"));
                 GUIPrincipal.listaEmpleados.addItem(sb.toString());
             }
             con.close();
