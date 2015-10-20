@@ -40,11 +40,34 @@ public class AccesoBBDD {
                 sb.append(rs.getObject("ciudad"));
                 GUIPrincipal.listaDepartamentos.addItem(sb.toString());
             }
+            con.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(AccesoBBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    public static void rellenaEmpleados(String numDepartamento){
+        try {
+            Connection con = devuelveConexion();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from emp where deptno = "+numDepartamento);
+            StringBuilder sb = new StringBuilder();
+            while (rs.next()){
+                sb.append(rs.getObject("empno"));
+                sb.append(" ");
+                sb.append(rs.getObject("apellido"));
+                sb.append(" ");
+                sb.append(rs.getObject("fechalta"));
+                GUIPrincipal.listaEmpleados.addItem(sb.toString());
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoBBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
 }
