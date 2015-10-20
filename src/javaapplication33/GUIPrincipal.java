@@ -16,7 +16,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
      */
     public GUIPrincipal() {
         initComponents();
-        
+        AccesoBBDD.rellenaDepartamentos();
     }
 
     /**
