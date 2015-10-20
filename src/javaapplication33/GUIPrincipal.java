@@ -44,14 +44,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         listaDepartamentos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        listaDepartamentos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaDepartamentosMouseClicked(evt);
-            }
-        });
-        listaDepartamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaDepartamentosActionPerformed(evt);
+        listaDepartamentos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listaDepartamentosItemStateChanged(evt);
             }
         });
 
@@ -60,9 +55,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Empleados");
 
         listaEmpleados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        listaEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaEmpleadosMouseClicked(evt);
+        listaEmpleados.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listaEmpleadosItemStateChanged(evt);
             }
         });
 
@@ -117,20 +112,16 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listaDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDepartamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaDepartamentosActionPerformed
-
-    private void listaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaDepartamentosMouseClicked
+    private void listaDepartamentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDepartamentosItemStateChanged
         listaEmpleados.setVisible(true);
         jLabel2.setVisible(true);
         String seleccionado=(listaDepartamentos.getItemAt(listaDepartamentos.getItemCount())).toString();
         String [] partido = seleccionado.split(" ");
         String numDepartamento = partido[0];
         AccesoBBDD.rellenaEmpleados(numDepartamento);
-    }//GEN-LAST:event_listaDepartamentosMouseClicked
+    }//GEN-LAST:event_listaDepartamentosItemStateChanged
 
-    private void listaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaEmpleadosMouseClicked
+    private void listaEmpleadosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaEmpleadosItemStateChanged
         jLabel3.setVisible(true);
         jScrollPane1.setVisible(true);
         jTextArea1.setVisible(true);
@@ -138,8 +129,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         String [] partido = seleccionado.split(" ");
         String numEmpleado = partido[0];
         AccesoBBDD.rellenaTareas(numEmpleado);
-        
-    }//GEN-LAST:event_listaEmpleadosMouseClicked
+    }//GEN-LAST:event_listaEmpleadosItemStateChanged
 
     /**
      * @param args the command line arguments
