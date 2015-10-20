@@ -69,5 +69,27 @@ public class AccesoBBDD {
         }
         
     }
+    
+    public static void rellenaTareas(String numEmpleado){
+        try {
+            Connection con = devuelveConexion();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select mas complejo que devuelva los datos de este empleado "+numEmpleado);
+            GUIPrincipal.jTextArea1.append("NUMERO      NOMBRE      HORAS\n");
+            GUIPrincipal.jTextArea1.append("===============================\n");
+            StringBuilder sb = new StringBuilder();
+            while (rs.next()){
+                /*
+                Aqui hay que ir construyendo un String a partir de la consulta como 
+                en los casos anteriores y meterselo con append
+                al jTextArea1 de la interfaz grafica
+                */
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesoBBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
