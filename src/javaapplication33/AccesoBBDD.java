@@ -53,6 +53,7 @@ public class AccesoBBDD {
             Connection con = devuelveConexion();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from emp where deptno = "+numDepartamento);
+            
             StringBuilder sb = new StringBuilder();
             while (rs.next()){
                 sb.append(rs.getObject("empno"));
