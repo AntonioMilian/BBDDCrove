@@ -74,7 +74,7 @@ public class AccesoBBDD {
         try {
             Connection con = devuelveConexion();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select mas complejo que devuelva los datos de este empleado "+numEmpleado);
+            ResultSet rs = st.executeQuery("select * from proyecto, trabaja where proyecto.proyecno=trabaja.proyecno and trabaja.empno = "+numEmpleado);
             GUIPrincipal.jTextArea1.append("NUMERO      NOMBRE      HORAS\n");
             GUIPrincipal.jTextArea1.append("===============================\n");
             StringBuilder sb = new StringBuilder();
