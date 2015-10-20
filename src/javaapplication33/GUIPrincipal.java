@@ -21,7 +21,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel3.setVisible(false);
         jTextArea1.setVisible(false);
         jScrollPane1.setVisible(false);
-        AccesoBBDD.rellenaDepartamentos();
+        //AccesoBBDD.rellenaDepartamentos();
     }
 
     /**
@@ -49,6 +49,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 listaDepartamentosItemStateChanged(evt);
             }
         });
+        listaDepartamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDepartamentosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Departamentos");
 
@@ -58,6 +63,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         listaEmpleados.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 listaEmpleadosItemStateChanged(evt);
+            }
+        });
+        listaEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEmpleadosActionPerformed(evt);
             }
         });
 
@@ -113,15 +123,23 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaDepartamentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDepartamentosItemStateChanged
+        
+    }//GEN-LAST:event_listaDepartamentosItemStateChanged
+
+    private void listaEmpleadosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaEmpleadosItemStateChanged
+        
+    }//GEN-LAST:event_listaEmpleadosItemStateChanged
+
+    private void listaDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDepartamentosActionPerformed
         listaEmpleados.setVisible(true);
         jLabel2.setVisible(true);
         String seleccionado=(listaDepartamentos.getItemAt(listaDepartamentos.getItemCount())).toString();
         String [] partido = seleccionado.split(" ");
         String numDepartamento = partido[0];
         AccesoBBDD.rellenaEmpleados(numDepartamento);
-    }//GEN-LAST:event_listaDepartamentosItemStateChanged
+    }//GEN-LAST:event_listaDepartamentosActionPerformed
 
-    private void listaEmpleadosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaEmpleadosItemStateChanged
+    private void listaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEmpleadosActionPerformed
         jLabel3.setVisible(true);
         jScrollPane1.setVisible(true);
         jTextArea1.setVisible(true);
@@ -129,7 +147,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         String [] partido = seleccionado.split(" ");
         String numEmpleado = partido[0];
         AccesoBBDD.rellenaTareas(numEmpleado);
-    }//GEN-LAST:event_listaEmpleadosItemStateChanged
+    }//GEN-LAST:event_listaEmpleadosActionPerformed
 
     /**
      * @param args the command line arguments
