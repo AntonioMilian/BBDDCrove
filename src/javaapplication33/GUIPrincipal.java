@@ -20,6 +20,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         jLabel3.setVisible(false);
         jTextArea1.setVisible(false);
+        jScrollPane1.setVisible(false);
         AccesoBBDD.rellenaDepartamentos();
     }
 
@@ -131,6 +132,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void listaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaEmpleadosMouseClicked
         jLabel3.setVisible(true);
+        jScrollPane1.setVisible(true);
         jTextArea1.setVisible(true);
         String seleccionado=(listaEmpleados.getItemAt(listaDepartamentos.getItemCount())).toString();
         String [] partido = seleccionado.split(" ");
@@ -150,7 +152,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
